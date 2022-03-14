@@ -74,26 +74,37 @@ ReactDOM.render(<Clock />, document.querySelector('#app'));
 }
 
 ReactDOM.render(<Clock />, document.querySelector('#app'));  */
+class Color extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+}
+
 
 
 function Clock(props) {
     React.useEffect(() => {
-        tick();        
+        tick();
     }, []);
     
-    const [date, setDate] = React.useState(new Date());
+    let [date, setDate] = React.useState(new Date());
+    let [color, setColor] = React.useState(new Color());
 
     const tick = () => {
         setInterval(() => {
             setDate(new Date())
         }, 1000)
     }
-    
-
+    const rebootColor = () => {
+       setColor('black')
+    }
     return (
         <div>
             <h1>Hello world</h1>
-            <h2>Il est {date.toLocaleTimeString()}.</h2>
+            <h2>Il est <span style={{color: color}}>{date.toLocaleTimeString()}.</span></h2>
+            <input type='color'></input>
+            <button onClick={rebootColor}>Réinitialiser</button>
         </div>
         );
 }
