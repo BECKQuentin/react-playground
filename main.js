@@ -1,9 +1,13 @@
-const helloWorld = React.createElement('h1', {}, 'Hello world!');
 
 
-// mauvaise pratique
+const title = React.createElement(
+    'h1',
+    {
+        className:'fs-1'
+    },
+    'Hello world'
+)
+let content = document.getElementById('content')
+ReactDOM.render(title, content)
 
-
-//ReactDOM.render(helloWorld, document.body);
-
-ReactDOM.render(helloWorld, document.querySelector('#app'));
+console.log(title)
