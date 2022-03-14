@@ -14,7 +14,7 @@ class FirstName extends React.Component {
     }
 }
 
-class LastName extends  React.Component {
+class LastName extends React.Component {
     props;
     constructor(props) {
         super(props);
