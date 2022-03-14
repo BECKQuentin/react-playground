@@ -1,25 +1,35 @@
-import * as ReactDOM from "react-dom";
+// import * as ReactDOM from "react-dom";
+const lastName = 'beck'
+const firstName = 'quentin'
 
-const name = 'Quentin BECK'
-const contact =  <h1>Bonjour, je m\'appelles {name}</h1>
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1)
+}
 
-const contactTitleElement = React.createElement(
-    contact,{}, name
-)
+const contact =
+    <div>
+        Bonjour, je m'appelles
+        <span className="red"> {lastName.toUpperCase()} </span>
+        <span>{capitalize(firstName)}</span>
+    </div>
+
+// const contactTitleElement = React.createElement(
+//
+// )
 
 const title = React.createElement(
     'h1',
     {
         className:'fs-1'
     },
-    'Hello world'
+    'Hello world', contact
 )
 let content = document.getElementById('content')
-let contactTitle = document.getElementById('contact_title')
+// let contactTitle = document.getElementById('contact_title')
 
 ReactDOM.render(title, content)
-ReactDOM.render(contactTitleElement, contactTitle)
+// ReactDOM.render(contactTitleElement, contactTitle)
 
-console.log(title)
+console.log(contact)
 
 // Créer une fonction qui va nous permettre de retourner nos Strings dans le format souhaité
