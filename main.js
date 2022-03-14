@@ -4,20 +4,23 @@ function capitalize(str) {
 }
 
 /*Composant*/
-class FirstName extends ReactComponent {
+class FirstName extends React.Component {
+    props;
     constructor(props) {
         super(props);
     }
     render() {
-        return <span className="red"> {props.text.toUpperCase()} </span>
+        return <span className="red"> {this.props.text.toUpperCase()} </span>
     }
 }
-class LastName extends  ReactComponent {
+
+class LastName extends  React.Component {
+    props;
     constructor(props) {
         super(props);
     }
     render() {
-        return <span className="blue"> {capitalize(props.text)} </span>
+        return <span className="blue"> {capitalize(this.props.text)} </span>
     }
 }
 
@@ -28,8 +31,8 @@ const firstName = 'quentin'
 const contact =
     <div>
         Bonjour, je m'appelles
-        {LastName(lastName)}
-        {FirstName(firstName)}
+        <FirstName text={firstName}/>
+        <LastName text={lastName}/>
     </div>
 
 /*React*/
