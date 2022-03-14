@@ -1,32 +1,35 @@
-//const helloWorld = React.createElement('h1', {}, 'Hello world!');
+// import * as ReactDOM from "react-dom";
+const lastName = 'beck'
+const firstName = 'quentin'
 
-const firstName = 'r0ulito';
-const lastName = 'formateur';
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1)
+}
 
+const contact =
+    <div>
+        Bonjour, je m'appelles
+        <span className="red"> {lastName.toUpperCase()} </span>
+        <span>{capitalize(firstName)}</span>
+    </div>
 
-// Solution sans bonus
-const helloWorld = <h1>Hello <span>{firstName[0].toUpperCase() + firstName.slice(1)}</span> <span className="red-text">{lastName.toUpperCase()}</span></h1>;
+// const contactTitleElement = React.createElement(
+//
+// )
 
+const title = React.createElement(
+    'h1',
+    {
+        className:'fs-1'
+    },
+    'Hello world', contact
+)
+let content = document.getElementById('content')
+// let contactTitle = document.getElementById('contact_title')
 
+ReactDOM.render(title, content)
+// ReactDOM.render(contactTitleElement, contactTitle)
 
-/**
- * 
- * Solution avec bonus
- */
+console.log(contact)
 
-/*
- const formatFirstName = (value) => value[0].toUpperCase() + value.slice(1);
-
- const formatLastName = (value) => value.toUpperCase();
- 
- // Solution avec bonus
- const helloWorld = (
-   <h1>
-     Hello <span>{formatFirstName(firstName)}</span>{" "}
-     <span className="red-text">{formatLastName(lastName)}</span>
-   </h1>
- );
-
- */
-
-ReactDOM.render(helloWorld, document.querySelector('#app'));
+// Créer une fonction qui va nous permettre de retourner nos Strings dans le format souhaité
