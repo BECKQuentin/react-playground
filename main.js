@@ -96,6 +96,10 @@ function Clock(props) {
             setDate(new Date())
         }, 1000)
     }
+    const changeColor = () => {
+        var randomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+        setTextColor(randomColor);
+    }
     const rebootColor = () => {
        setColor('black')
     }
