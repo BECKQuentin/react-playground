@@ -78,7 +78,6 @@ class Color extends React.Component {
     constructor(props) {
         super(props);
     }
-
 }
 
 
@@ -98,16 +97,22 @@ function Clock(props) {
     }
     const changeColor = () => {
         var randomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
-        setTextColor(randomColor);
+        setColor(randomColor);
     }
     const rebootColor = () => {
        setColor('black')
     }
+    const choiceColor = () => {
+        let inputColor = document.getElementById('choiceColor')
+        setColor(inputColor.value)
+    }
     return (
         <div>
-            <h1>Hello world</h1>
+            <h1 style={{color: 'red'}}>Hello world</h1>
             <h2>Il est <span style={{color: color}}>{date.toLocaleTimeString()}.</span></h2>
-            <input type='color'></input>
+            <button onClick={changeColor}>Change</button>
+            <input type='color' id="choiceColor"></input>
+            <button onClick={choiceColor}>Choice</button>
             <button onClick={rebootColor}>Réinitialiser</button>
         </div>
         );
