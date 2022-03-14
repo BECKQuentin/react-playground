@@ -1,37 +1,52 @@
-const firstName = 'r0ulito';
-const lastName = 'formateur';
-
-function FirstName(props) {
-
-    /*
-    // Solution avec bonus
-    const formatFirstName = (firstName) => {
-        return firstName[0].toUpperCase() + firstName.substr(1);
-    }
-
-    return <span>{formatFirstName(props.text)}</span>
-    */
-
-    // Solution sans bonus
-    return <span>{props.text[0].toUpperCase() + props.text.substr(1)}</span>
+/*function*/
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
-function LastName(props) {
-
-    /*
-    // Solution avec bonus
-    const formatLastName = (lastName) => {
-        return lastName.toUpperCase();
+/*Composant*/
+class FirstName extends React.Component {
+    props;
+    constructor(props) {
+        super(props);
     }
-
-    return <span>{formatLastName(props.text)}</span>
-    */
-
-    // Solution sans bonus
-    return <span className="red-text">{props.text.toUpperCase()}</span>
-
+    render() {
+        return <span className="red"> {this.props.text.toUpperCase()} </span>
+    }
 }
 
-const helloWorld = <h1>Hello <FirstName text={firstName}/> <LastName text={lastName}/></h1>;
+class LastName extends  React.Component {
+    props;
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return <span className="blue"> {capitalize(this.props.text)} </span>
+    }
+}
 
-ReactDOM.render(helloWorld, document.querySelector('#app'));
+/*data*/
+const lastName = 'beck'
+const firstName = 'quentin'
+
+const contact =
+    <div>
+        Bonjour, je m'appelles
+        <FirstName text={firstName}/>
+        <LastName text={lastName}/>
+    </div>
+
+/*React*/
+const title = React.createElement(
+    'h1',
+    {
+        className:'fs-1'
+    },
+    'Hello world', contact
+)
+let content = document.getElementById('content')
+
+ReactDOM.render(title, content)
+
+console.log(contact)
+
+// Créer une fonction qui va nous permettre de retourner nos Strings dans le format souhaité

@@ -44,7 +44,11 @@ En vous aidant de la documentation modifions ce code pour avoir un composant `Cl
 
 ## Énoncé
 
-En nous appuyant sur la documentation, modifions le code d'exemple précédent pour en faire un `Class component`.
+Reprenons le code de l'exercice précédent.
+Nous allons ajouter deux nouveaux composants.
+L'un sera nommé `FirstName`, l'autre `LastName`.
+
+Ainsi nous allons remplacer nos deux `<span>` par leur composant respectif. 
 
 Puis avec nos connaissances, modifions à nouveau ce code pour en faire un `Functional component`.
 
