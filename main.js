@@ -1,37 +1,10 @@
 /*function*/
+
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
-function tick() {
-    const element = (
-        <div>
-            <h1>Hello World !</h1>
-            <h2>Il est {new Date().toLocaleTimeString()}.</h2>
-        </div>
-    );
-    ReactDOM.render(element, document.getElementById('root'));
-}
-// Chaque seconde, nous appellons ReactDOM.render() depuis un callback passé à setInterval().
-setInterval(tick, 1000);
-function Clock(props) {
-    return (
-        <div>
-            <h1>Bonjour, monde !</h1>
-            <h2>Il est {props.date.toLocaleTimeString()}.</h2>
-        </div>
-    );
-}
-
-function tick() {
-    ReactDOM.render(
-        <Clock date={new Date()} />,
-        document.getElementById('root')
-    );
-}
-setInterval(tick, 1000);
-
-
+/*Component*/
 function Clock(props) {
     React.useEffect(() => {
         tick();
@@ -42,7 +15,7 @@ function Clock(props) {
     const tick = () => {
         setInterval(() => {
             setDate(new Date())
-        }, 1000)
+        }, 5000)
     }
 
     return (
@@ -52,23 +25,9 @@ function Clock(props) {
         </div>
     );
 }
+ReactDOM.render(<Clock/>, document.querySelector('#content'));
 
-ReactDOM.render(<Clock />, document.querySelector('#app'));
 
-
-/*Component*/
-class Clock extends React.Component {
-    props;
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return <div>
-            <h1>Hello World !</h1>
-            <h2>Il est {new Date().toLocaleTimeString()}.</h2>
-        </div>
-    }
-}
 
 class FirstName extends React.Component {
     props;
@@ -76,7 +35,7 @@ class FirstName extends React.Component {
         super(props);
     }
     render() {
-        return <span className="red"> {this.props.text.toUpperCase()} </span>
+        return <span className="red"> {capitalize(this.props.text)} </span>
     }
 }
 class LastName extends  React.Component {
@@ -85,7 +44,7 @@ class LastName extends  React.Component {
         super(props);
     }
     render() {
-        return <span className="blue"> {capitalize(this.props.text)} </span>
+        return <span className="blue"> {this.props.text.toUpperCase()} </span>
     }
 }
 
