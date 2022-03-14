@@ -89,7 +89,7 @@ function Clock(props) {
     }, []);
     
     let [date, setDate] = React.useState(new Date());
-    let [color, setColor] = React.useState(new Color());
+    let [color, setColor] = React.useState('black');
 
     const tick = () => {
         setInterval(() => {
