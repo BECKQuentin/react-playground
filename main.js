@@ -1,22 +1,38 @@
-// import * as ReactDOM from "react-dom";
-const lastName = 'beck'
-const firstName = 'quentin'
-
+/*function*/
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
+/*Composant*/
+class FirstName extends ReactComponent {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return <span className="red"> {props.toUpperCase()} </span>
+    }
+}
+class LastName extends  ReactComponent {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return <span className="blue"> {capitalize(firstName)} </span>
+    }
+}
+
+/*data*/
+const lastName = 'beck'
+const firstName = 'quentin'
+
 const contact =
     <div>
         Bonjour, je m'appelles
-        <span className="red"> {lastName.toUpperCase()} </span>
-        <span>{capitalize(firstName)}</span>
+        {LastName(lastName)}
+        {FirstName(firstName)}
     </div>
 
-// const contactTitleElement = React.createElement(
-//
-// )
-
+/*React*/
 const title = React.createElement(
     'h1',
     {
@@ -25,10 +41,8 @@ const title = React.createElement(
     'Hello world', contact
 )
 let content = document.getElementById('content')
-// let contactTitle = document.getElementById('contact_title')
 
 ReactDOM.render(title, content)
-// ReactDOM.render(contactTitleElement, contactTitle)
 
 console.log(contact)
 
