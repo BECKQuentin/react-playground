@@ -9,7 +9,7 @@ class FirstName extends ReactComponent {
         super(props);
     }
     render() {
-        return <span className="red"> {props.toUpperCase()} </span>
+        return <span className="red"> {props.text.toUpperCase()} </span>
     }
 }
 class LastName extends  ReactComponent {
@@ -17,7 +17,7 @@ class LastName extends  ReactComponent {
         super(props);
     }
     render() {
-        return <span className="blue"> {capitalize(firstName)} </span>
+        return <span className="blue"> {capitalize(props.text)} </span>
     }
 }
 
