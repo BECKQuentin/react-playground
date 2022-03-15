@@ -5,11 +5,14 @@ function GuestGreeting(props) {
     return <h1>Veuillez vous inscrire .</h1>;
 }
 function ConnexionButton(props) {
-   return <button>Connecter</button>;
+   return <button onClick={connexion}>Connecter</button>;
 }
 
+const [isLoggedIn, setIsLoggedIn] = useIsLoggedIn(true);
+console.log(isLoggedIn)
+
 function Greeting(props) {
-    const isLoggedIn = props.isLoggedIn;
+    const isLoggedIn = checked.isLoggedIn;
     return isLoggedIn ? <UserGreeting /> : <GuestGreeting/>;
 }
 
@@ -20,7 +23,7 @@ ReactDOM.render(
 
 ReactDOM.render(
     // Essayez de changer ça vers isLoggedIn={true} :
-    <Greeting isLoggedIn={false} />,
+    <Greeting />,
     document.getElementById('greeting')
 );
 
