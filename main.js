@@ -54,15 +54,17 @@
 //
 // );
 
-function FetchUser () {
+function FetchUser (props) {
 
     React.useEffect(() => {
-        return () => {
-            fetch('https://jsonplaceholder.typicode.com/todos/1')
-                .then(response => response.json())
-                .then(json => console.log(json))
-        };
-    },[]);
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response => response.json())
+            // .then(json => console.log(json))
+            .then(usersObject => setUsers(usersObject))
+    }, [])
+
+    const [users, setUsers] = React.useState([]);
+
     const arrUser = [{
         id: 1,
         name: 'Robert',
@@ -73,8 +75,19 @@ function FetchUser () {
         name: 'Jacques',
         age: 33
     }]
-    const arrItems = arrUser.map((user) =>
-        <li key={user.id}>{user.name} - <span>{user.age}</span></li>
+
+    const arrItems = users.map((user) =>
+        <li key={user.id}>
+            <div className="card" style="width: 18rem;">
+                <img className="card-img-top" src="..." alt="Card image cap"/>
+                <div className="card-body">
+                    <h5 className="card-title">{user.name} {user.username}</h5>
+                    <p className="card-text">{user.email}</p>
+                    <p className="card-text">{user.address}</p>
+                    <a href="#" className="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </li>
     );
 
     return(
@@ -82,6 +95,22 @@ function FetchUser () {
             {arrItems}
         </React.Fragment>
     )
+}
+
+function Card(props) {
+
+    return(
+    <React.Fragment>
+        <div className="card" style="width: 18rem;">
+            <img className="card-img-top" src="..." alt="Card image cap"/>
+            <div className="card-body">
+                <h5 className="card-title">{user.name} user.username</h5>
+                <p className="card-text">{user.email}</p>
+                <p className="card-text">{user.address}</p>
+                <a href="#" className="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </React.Fragment>)
 }
 
 //Puis on peut rendre nos élements comme ceci
