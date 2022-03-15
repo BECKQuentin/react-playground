@@ -157,6 +157,11 @@ class Toggle extends React.Component {
         }));
     }
 
+    componentDidUpdate()
+    {
+        console.log('updated', this.state)
+    }
+
     render() {
         return (
             <React.Fragment>
