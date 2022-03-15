@@ -2,7 +2,7 @@ function UserGreeting(props) {
     return <h1>Bienvenue !</h1>;
 }
 function GuestGreeting(props) {
-    return <h1>Veuillez vous inscrire.</h1>;
+    return <h1>Veuillez vous inscrire .</h1>;
 }
 function ConnexionButton(props) {
    return <button>Connecter</button>;
@@ -10,17 +10,18 @@ function ConnexionButton(props) {
 
 function Greeting(props) {
     const isLoggedIn = props.isLoggedIn;
-    return isLoggedIn ? <UserGreeting /> : <GuestGreeting/>
+    return isLoggedIn ? <UserGreeting /> : <GuestGreeting/>;
 }
+
 ReactDOM.render(
     <ConnexionButton />,
-    document.getElementById('root')
+    document.getElementById('connexion')
 )
 
 ReactDOM.render(
     // Essayez de changer ça vers isLoggedIn={true} :
     <Greeting isLoggedIn={false} />,
-    document.getElementById('root')
+    document.getElementById('greeting')
 );
 
 function Mailbox(props) {
