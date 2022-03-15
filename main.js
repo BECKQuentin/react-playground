@@ -53,11 +53,10 @@
 //     <li key={number.toString()}>{number}</li>
 //
 // );
-
 function FetchUser (props) {
 
     React.useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
+        fetch('https://jsonplaceholder.typicode.com/users/1')
             .then(response => response.json())
             // .then(json => console.log(json))
             .then(usersObject => setUsers(usersObject))
@@ -65,40 +64,34 @@ function FetchUser (props) {
 
     const [users, setUsers] = React.useState([]);
 
-    const arrUser = [{
-        id: 1,
-        name: 'Robert',
-        age: 27,
-    },
-    {
-        id: 2,
-        name: 'Jacques',
-        age: 33
-    }]
-
-    const arrItems = users.map((user) =>
-        <li key={user.id}>
-            <div className="card">
-                <img className="card-img-top" src="..." alt="Card image cap"/>
-                <div className="card-body">
-                    <h5 className="card-title">{user.name} {user.username}</h5>
-                    <p className="card-text">{user.email}</p>
-                    {/*<p className="card-text">{user.address}</p>*/}
-                    <a href="#" className="btn btn-primary">Go somewhere</a>
+    if(users != []) {
+        const arrItems = users.map((user) =>
+            <li key={user.id}>
+                <div className="card m-2">
+                    <img className="card-img-top" src="..." alt="Card image cap"/>
+                    <div className="card-body">
+                        <h5 className="card-title">{user.name} {user.username}</h5>
+                        <p className="card-text">{user.email}</p>
+                        {/*<p className="card-text">{user.address}</p>*/}
+                        <a href="#" className="btn btn-primary">Go somewhere</a>
+                        <button className="mx-2 btn btn-danger">Delete</button>
+                    </div>
                 </div>
-            </div>
-        </li>
-    );
+            </li>
+        );
+    } else {
+        const arrItems = ''
+    }
 
     return(
         <React.Fragment>
             {arrItems}
         </React.Fragment>
     )
+
 }
 
 function Card(props) {
-
     return(
     <React.Fragment>
         <div className="card" style="width: 18rem;">
