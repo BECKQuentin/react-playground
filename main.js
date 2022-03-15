@@ -1,3 +1,80 @@
+function UserGreeting(props) {
+    return <h1>Bienvenue !</h1>;
+}
+function GuestGreeting(props) {
+    return <h1>Veuillez vous inscrire.</h1>;
+}
+function ConnexionButton(props) {
+   return <button>Connecter</button>;
+}
+
+function Greeting(props) {
+    const isLoggedIn = props.isLoggedIn;
+    return isLoggedIn ? <UserGreeting /> : <GuestGreeting/>
+}
+ReactDOM.render(
+    <ConnexionButton />,
+    document.getElementById('root')
+)
+
+ReactDOM.render(
+    // Essayez de changer ça vers isLoggedIn={true} :
+    <Greeting isLoggedIn={false} />,
+    document.getElementById('root')
+);
+
+function Mailbox(props) {
+    // Ici nous pourrions destructurer la prop pour éviter de passer par une variable tampon
+    /* function Mailbox({unreadMessages}) {
+        // Et nous aurions directement accès à unreadMessages
+    }*/
+    const unreadMessages = props.unreadMessages;
+    return (
+        <div>
+            <h1>Bonjour !</h1>
+            {unreadMessages.length > 0 &&
+                <h2>
+                    Vous avez {unreadMessages.length} message(s) non-lu(s).
+                </h2>
+            }
+        </div>
+    );
+}
+
+const messages = ['React', 'Re: React', 'Re:Re: React'];
+ReactDOM.render(
+    <Mailbox unreadMessages={messages} />,
+    document.getElementById('root')
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function Clock(props) {
     React.useEffect(() => {
         tick();
@@ -26,7 +103,6 @@ function Clock(props) {
         e.preventDefault();
         clearInterval(intervalRef.current);
     }
-
 
     const restartClock = (e) => {
         e.preventDefault();
