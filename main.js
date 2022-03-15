@@ -193,45 +193,47 @@ ReactDOM.render(
     document.getElementById('connexion')
 );
 
-ReactDOM.render(
-    <Greeting isLoggedIn={false} />,
-    document.getElementById('root')
-);
-///////////////
-// function Clock(props) {
-//     React.useEffect(() => {
-//         tick();
-//     }, []);
-//
-//     let [date, setDate] = React.useState(new Date());
-//     let [color, setColor] = React.useState('black');
-//
-//     const tick = () => {
-//         setInterval(() => {
-//             setDate(new Date())
-//         }, 1000)
-//     }
-//     const changeColor = () => {
-//         var randomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
-//         setColor(randomColor);
-//     }
-//     const rebootColor = () => {
-//         setColor('black')
-//     }
-//     const choiceColor = () => {
-//         let inputColor = document.getElementById('choiceColor')
-//         setColor(inputColor.value)
-//     }
-//     return (
-//         <div>
-//             <h1 style={{color: 'red'}}>Hello world</h1>
-//             <h2>Il est <span style={{color: color}}>{date.toLocaleTimeString()}.</span></h2>
-//             <button onClick={changeColor}>Change</button>
-//             <input type='color' id="choiceColor"></input>
-//             <button onClick={choiceColor}>Choice</button>
-//             <button onClick={rebootColor}>Réinitialiser</button>
-//         </div>
-//     );
+// ReactDOM.render(
+//     <Greeting isLoggedIn={false} />,
+//     document.getElementById('root')
+// );
+////////////////////////////////////////////////////////////////////////////////////
+// function UserGreeting(props) {
+//     return <h1>Bienvenue !</h1>;
 // }
 //
-// ReactDOM.render(<Clock />, document.querySelector('#app'));
+// function GuestGreeting(props) {
+//     return <h1>Veuillez vous connecter</h1>;
+// }
+// function Greeting(props) {
+//     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+//
+//     const handleLogIn = (e) => {
+//         e.preventDefault();
+//         setIsLoggedIn(true);
+//     }
+//
+//     const handleLogOut = (e) => {
+//         e.preventDefault();
+//         setIsLoggedIn(false);
+//     }
+//
+//     return(
+//         <React.Fragment>
+//             {isLoggedIn ?
+//                 <React.Fragment>
+//                     <UserGreeting />
+//                     <button onClick={handleLogOut}>Se déconnecter</button>
+//                 </React.Fragment> :
+//                 <React.Fragment>
+//                     <GuestGreeting />
+//                     <button onClick={handleLogIn}>Se connecter</button>
+//                 </React.Fragment> }
+//         </React.Fragment>
+//     )
+// }
+//
+// ReactDOM.render(
+//     <Greeting />,
+//     document.querySelector('#app')
+// );
