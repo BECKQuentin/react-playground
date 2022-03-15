@@ -78,12 +78,12 @@ function FetchUser (props) {
 
     const arrItems = users.map((user) =>
         <li key={user.id}>
-            <div className="card" style="width: 18rem;">
+            <div className="card">
                 <img className="card-img-top" src="..." alt="Card image cap"/>
                 <div className="card-body">
                     <h5 className="card-title">{user.name} {user.username}</h5>
                     <p className="card-text">{user.email}</p>
-                    <p className="card-text">{user.address}</p>
+                    {/*<p className="card-text">{user.address}</p>*/}
                     <a href="#" className="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
@@ -104,7 +104,7 @@ function Card(props) {
         <div className="card" style="width: 18rem;">
             <img className="card-img-top" src="..." alt="Card image cap"/>
             <div className="card-body">
-                <h5 className="card-title">{user.name} user.username</h5>
+                <h5 className="card-title">{user.name} {user.username}</h5>
                 <p className="card-text">{user.email}</p>
                 <p className="card-text">{user.address}</p>
                 <a href="#" className="btn btn-primary">Go somewhere</a>
@@ -115,7 +115,7 @@ function Card(props) {
 
 //Puis on peut rendre nos élements comme ceci
 ReactDOM.render(
-    <ul><FetchUser /></ul>,
+    <ul className="d-flex flex-wrap"><FetchUser /></ul>,
     // <li key={number.toString()}>{number}</li>
     document.querySelector('#app')
 );
