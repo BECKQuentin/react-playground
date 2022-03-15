@@ -18,6 +18,11 @@ function UserGreeting(props) {
           setIsLoggedIn(false);
       }
 
+      // React.componentDidUpdate()
+      // {
+      //     console.log('updated', isLoggedIn)
+      // }
+
     return(
         <React.Fragment>
             {isLoggedIn ? 
