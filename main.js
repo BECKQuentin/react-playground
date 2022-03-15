@@ -159,9 +159,15 @@ class Toggle extends React.Component {
 
     render() {
         return (
-            <button onClick={this.handleClick}>
-                {this.state.isLoggedIn ? 'Connecter' : 'Déconnecter'}
-            </button>
+            <React.Fragment>
+                <div>
+                    {this.state.isLoggedIn ? <GuestGreeting/> : <UserGreeting />}
+                </div>
+
+                <button onClick={this.handleClick}>
+                    {this.state.isLoggedIn ? 'Connecter' : 'Déconnecter'}
+                </button>
+            </React.Fragment>
         );
     }
 }
