@@ -64,59 +64,26 @@ function FetchUser (props) {
 
     const [users, setUsers] = React.useState([]);
 
-    // const arrItems = users.map((user) =>
-    //     <UserCard key={user.id} user={user}/>
-    // )
+    // React.useEffect(() => {
+    //     setUsers([])
+    //     console.log(users)
+    // }, [])
 
-    // if(users != []) {
-    //     const arrItems = users.map((user) =>
-    //         <li key={user.id}>
-    //             <div className="card m-2">
-    //                 <img className="card-img-top" src="..." alt="Card image cap"/>
-    //                 <div className="card-body">
-    //                     <h5 className="card-title">{user.name} {user.username}</h5>
-    //                     <p className="card-text">{user.email}</p>
-    //                     <p className="card-text">{user.address}</p>
-    //                     <a href="#" className="btn btn-primary">Go somewhere</a>
-    //                     <button className="mx-2 btn btn-danger">Delete</button>
-    //                 </div>
-    //             </div>
-    //         </li>
-    //     );
-    // } else {
-    //     const arrItems = ''
-    // }
-    // const arrItems = users.map((user) =>
-    //         <li key={user.id}>
-    //             <div className="card m-2">
-    //                 <img className="card-img-top" src="..." alt="Card image cap"/>
-    //                 <div className="card-body">
-    //                     <h5 className="card-title">{user.name} {user.username}</h5>
-    //                     <p className="card-text">{user.email}</p>
-    //                     <a href="#" className="btn btn-primary">Go somewhere</a>
-    //                     <button className="mx-2 btn btn-danger">Delete</button>
-    //                 </div>
-    //             </div>
-    //         </li>
-    //     );
-    // return(
-    //     <React.Fragment>
-    //         {arrItems}
-    //     </React.Fragment>
-    // )
+    // React.useEffect(() => {
+    //     console.log(users)
+    // }, [users])
 
     return(
         <React.Fragment>
-            { users.map((user) =>
-                <UserCard key={user.id} user={user}/>)
-            }
+            {users.map((user) => {
+                <UserCard user={user}/>
+                }
+            )}
         </React.Fragment>
     )
-
-
 }
 
-function UserCard(user) {
+function UserCard({user}) {
     return(
     <React.Fragment>
         <li key={user.id}>
