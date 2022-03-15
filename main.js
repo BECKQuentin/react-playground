@@ -56,9 +56,9 @@
 function FetchUser (props) {
 
     React.useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
+        fetch('https://jsonplaceholder.typicode.com/users/1')
             .then(response => response.json())
-            // .then(json => console.log(json))
+            .then(json => console.log(json))
             .then(usersObject => setUsers(usersObject))
     }, [])
 
@@ -75,10 +75,11 @@ function FetchUser (props) {
 
     return(
         <React.Fragment>
-            {users.map((user) => {
-                <UserCard user={user}/>
-                }
-            )}
+            {
+                users.map((user) => (
+                    <UserCard key={user.id} user={user}/>
+                ))
+            }
         </React.Fragment>
     )
 }
