@@ -44,30 +44,50 @@
 
 //////////////////////////////////////////////
 
+// const numbers = [1, 2, 3, 4, 5];
+// // En itérant sur le tableau on retourne un élement <li> pour chacune des entrées
+// // et on assigne ses élements à la variables listItems
+// const listItems = numbers.map((number) =>
+//
+//     /*⚠ On évitera d'utliser les index comme clé si l'ordre des éléments est susceptible de changer ⚠*/
+//     <li key={number.toString()}>{number}</li>
+//
+// );
 
+function FetchUser () {
 
-const numbers = [1, 2, 3, 4, 5];
-// En itérant sur le tableau on retourne un élement <li> pour chacune des entrées
-// et on assigne ses élements à la variables listItems
-const listItems = numbers.map((number) =>
+    useEffect(() => {
+        return () => {
+            fetch('https://jsonplaceholder.typicode.com/todos/1')
+                .then(response => response.json())
+                .then(json => console.log(json))
+        };
+    },[]);
+    const arrUser = [{
+        id: 1,
+        name: 'Robert',
+        age: 27,
+    },
+    {
+        id: 2,
+        name: 'Jacques',
+        age: 33
+    }]
+    const arrItems = arrUser.map((user) =>
+        <li key={user.id}>{user.name} - <span>{user.age}</span></li>
+    );
 
-    /*⚠ On évitera d'utliser les index comme clé si l'ordre des éléments est susceptible de changer ⚠*/
-    <li key={number.toString()}>{number}</li>
-
-);
-
-function fetchUser () {
-    let user = ''
-    fetch('https://jsonplaceholder.typicode.com/todos/1')
-        .then(response => response.json())
-        .then(json => console.log(json))
-    return user
+    return(
+        <React.Fragment>
+            {arrItems}
+        </React.Fragment>
+    )
 }
-console.log(fetchUser())
 
 //Puis on peut rendre nos élements comme ceci
 ReactDOM.render(
-    <ul>{listItems}</ul>,
+    <ul><FetchUser /></ul>,
+    // <li key={number.toString()}>{number}</li>
     document.querySelector('#app')
 );
 
