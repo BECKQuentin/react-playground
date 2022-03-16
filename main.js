@@ -286,32 +286,27 @@
 //
 // ;
 //////////////////////////////////////////////////////////////////////////////
+//Float
 function BaseNumberInput(props) {
 
     const [inputFloat, setInputFloat] = React.useState();
-    const [inputBinary, setInputBinary] = React.useState();
 
     const handleChange = (e) => {
 
         e.preventDefault();
         let entryFloat = document.getElementById('entryFloat')
-        let entryBinary = document.getElementById('entryBinary')
         setInputFloat(entryFloat.value)
-        setInputBinary(entryBinary.value)
 
         // props.onChange(e.target.value)
-        console.log(inputFloat)
-        console.log(inputBinary)
     }
     const handleSubmit = (e) => {
         e.preventDefault()
 
         //convertir entryFloat en Binaire
-
-
-        //convertir entryBinary en Float
-        setInputFloat(parseInt(inputBinary,2))
-        console.log(inputFloat)
+        let number = parseInt(inputFloat)
+        setInputBinary(number.toString(2))
+        let entryBinary = document.getElementById('entryBinary')
+        entryBinary.value = inputBinary
     }
 
     return(
@@ -319,13 +314,42 @@ function BaseNumberInput(props) {
             <label for="entry">Entrez un nombre (décimal)</label>
             <input id="entryFloat" type="number" onChange={handleChange}/>
             <input type="submit" value="Convertir" onClick={handleSubmit}/>
+        </form>
+    )
+}
+
+//Binary
+function BaseNumberInput(props) {
+
+    const [inputBinary, setInputBinary] = React.useState();
+
+    const handleChange = (e) => {
+
+        e.preventDefault();
+        let entryBinary = document.getElementById('entryBinary')
+        setInputBinary(entryBinary.value)
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        //convertir entryBinary en Float
+        setInputFloat(parseInt(inputBinary,2))
+        let entryFloat = document.getElementById('entryFloat')
+        entryFloat.value = inputFloat
+    }
+
+    return(
+        <form>
             <input id="entryBinary" type="number" onChange={handleChange}/>
             <label for="entryBinary">Entrez un nombre (binaire)</label>
+            <input type="submit" value="Convertir" onClick={handleSubmit}/>
         </form>
     )
 }
 
 function App(props) {
+
+
 
 
     return(
@@ -335,3 +359,64 @@ function App(props) {
     )
 }
 ReactDOM.render(<App />, document.querySelector('#app'))
+
+
+
+// function BaseNumberInput(props) {
+//
+//     const [inputFloat, setInputFloat] = React.useState();
+//
+//     const handleChange = (e) => {
+//         e.preventDefault();
+//         setInputFloat(e.target.value)
+//         // props.onChange(e.target.value)
+//     }
+//     const handleSubmit = (e) => {
+//         e.preventDefault()
+//
+//         //convertir entryFloat en Binaire
+//
+//     }
+//
+//     return(
+//         <form>
+//             <label for="entry">Entrez un nombre (décimal)</label>
+//             <input id="entryFloat" type="number" onChangeBase={handleChange}/>
+//         </form>
+//     )
+// }
+// function BaseNumberInput(props) {
+//     const [inputBinary, setInputBinary] = React.useState();
+//
+//     const handleChange = (e) => {
+//
+//         e.preventDefault();
+//
+//         setInputBinary(e.target.value)
+//
+//         // props.onChange(e.target.value)
+//         console.log(inputBinary)
+//     }
+//     const handleSubmit = (e) => {
+//         e.preventDefault()
+//
+//         //convertir entryBinary en Float
+//         setInputFloat(parseInt(inputBinary,2))
+//
+//         entryFloat.value = inputFloat
+//         // console.log(inputFloat)
+//     }
+//
+//     return(
+//         <form>
+//             <input id="entryBinary" type="number" onChangeBase={handleChange}/>
+//             <label for="entryBinary">Entrez un nombre (binaire)</label>
+//         </form>
+//     )
+// }
+// function Submit(props) {
+//
+//     return (<input type="submit" value="Convertir" onClick={handleSubmit}/>)
+// }
+
+
