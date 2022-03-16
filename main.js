@@ -112,7 +112,7 @@ function EssayForm(props) {
         <form onSubmit={handleSubmit}>
             <label>
                 Essay:
-                <textrea value={essay} onChange={handleChange} />
+                <textrea rows={5} cols={35} value={essay} onChange={handleChange} />
             </label>
             <input type="submit" value="Envoyer" />
         </form>
