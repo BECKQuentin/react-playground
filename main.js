@@ -73,25 +73,6 @@ function FetchUser (props) {
             }
         </React.Fragment>
     )
-
-    // React.useEffect(() => {
-    //     setUsers([])
-    //     console.log(users)
-    // }, [])
-
-    // React.useEffect(() => {
-    //     console.log(users)
-    // }, [users])
-
-    // return(
-    //     <React.Fragment>
-    //         {
-    //             users.map((user) => (
-    //                 <UserCard key={user.id} user={user}/>
-    //             ))
-    //         }
-    //     </React.Fragment>
-    // )
 }
 
 function UserCard({user}) {
