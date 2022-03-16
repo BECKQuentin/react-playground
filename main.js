@@ -165,6 +165,7 @@ function Form(props)
     {
         const target = e.target;
         console.log(e)
+        const value = target.type === 'checkbox' ? target.checked : target.value;
         // setName(target.value);
         // setEssay(target.value);
         // setFlavor(target.value)
