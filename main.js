@@ -58,7 +58,6 @@ function FetchUser (props) {
     React.useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
-            // .then(json => console.log(json))
             .then(usersObject => setUsers(usersObject))
     }, [])
 
@@ -95,7 +94,6 @@ function UserCard({user}) {
 //Puis on peut rendre nos élements comme ceci
 ReactDOM.render(
     <ul className="d-flex flex-wrap"><FetchUser /></ul>,
-    // <li key={number.toString()}>{number}</li>
     document.querySelector('#app')
 );
 
