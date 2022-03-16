@@ -78,8 +78,7 @@ function NameForm(props) {
     }
     function handleSubmit(e)
     {
-        console.log(e.target.value)
-        alert('Le nom a été soumis : ' + e.target.value);
+        alert('Le nom a été soumis : ' + name);
         event.preventDefault();
     }
 
@@ -94,4 +93,31 @@ function NameForm(props) {
     );
 }
 
+function EssayForm(props) {
+
+    const [essay, setEssay] = React.useState('Écrivez un essai à propos de votre élément du DOM préféré')
+
+    function handleChange(e)
+    {
+        e.preventDefault();
+        setEssay(e.target.value);
+    }
+    function handleSubmit(e)
+    {
+        alert('Un essai a été envoyé : ' + name);
+        e.preventDefault();
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <label>
+                Essay:
+                <textrea value={essay} onChange={handleChange} />
+            </label>
+            <input type="submit" value="Envoyer" />
+        </form>
+    );
+}
+
 ReactDOM.render(<NameForm/>, document.querySelector('#app'))
+ReactDOM.render(<EssayForm/>, document.querySelector('#app'))
