@@ -165,17 +165,21 @@ function Form(props)
     {
         const target = e.target;
         console.log(e)
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        // setName(target.value);
-        // setEssay(target.value);
-        // setFlavor(target.value)
+        if ( target.type === 'text') {
+            setName(target.value);
+        } else if (target.type === "textarea") {
+            setEssay(target.value);
+        } else if (target.type === "select") {
+            setFlavor(target.value)
+        }
     }
 
     function handleSubmit(e)
     {
         e.preventDefault();
         if(flavor == 'default') return
-
+        alert('Le nom a été soumis : ' + name );
+        alert('Un essai a été envoyé : ' + essay);
         alert('Votre parfum favori est : ' + flavor);
     }
 
