@@ -75,6 +75,7 @@ function FetchUser (props) {
 }
 
 function UserCard({user}) {
+    let {street, city} = user.address
     return(
     <React.Fragment>
         <li key={user.id}>
@@ -83,7 +84,7 @@ function UserCard({user}) {
                 <div className="card-body">
                     <h5 className="card-title">{user.name} {user.username}</h5>
                     <p className="card-text">{user.email}</p>
-                    <p className="card-text">{user.address}</p>
+                    <p className="card-text">{street} - {city}</p>
                     <a href="#" className="btn btn-primary">Go somewhere</a>
                     <button className="mx-2 btn btn-danger">Delete</button>
                 </div>
