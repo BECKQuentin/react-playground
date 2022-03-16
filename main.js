@@ -71,12 +71,20 @@ function NameForm(props) {
 
     const [value, setValue] = React.useState('')
 
-    React.useEffect(() => {
-        alert('Le nom a été soumis : ' + value);
-    }, [value])
+    function handleSubmit(e)
+    {
+        console.log(e);
+        // React.useEffect(() => {
+        //     alert('Le nom a été soumis : ' + value);
+        // }, [value])
+    }
+    // function handleChange(e)
+    // {
+    //     console.log(e)
+    // }
 
     return (
-        <form>
+        <form onSubmit={handleSubmit.bind}>
             <label>
                 Nom :
                 <input type="text" value={value} />
