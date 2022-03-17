@@ -322,7 +322,7 @@ function App(props) {
     )
 }
 
-function BaseNumberInput({text, number, onChangeBase, base, value}) {
+function BaseNumberInput({text, number, onChangeBase, base}) {
 
     const handleChange = ({target: {value}}) => {
         onChangeBase(value, base);
