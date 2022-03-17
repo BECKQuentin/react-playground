@@ -354,7 +354,10 @@ function App(props) {
 
     return(
         <React.Fragment>
-            <BaseNumberInput />
+            <BaseNumberInput
+            text={"float"}/>
+            <BaseNumberInput
+            text={"binary"}/>
         </React.Fragment>
     )
 }
