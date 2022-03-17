@@ -290,52 +290,44 @@ function App(props) {
     const [base, setBase] = React.useState('none');
     const [inputFloat, setInputFloat] = React.useState('');
     const [inputBinary, setInputBinary] = React.useState('');
+    const [inputSelect, setInputSelect] = React.useState('binary');
 
-    const handleChange = (value, base, option) => {
-        console.log(value)
-        switch (option) {
-            case('binary'):
-                switch(base) {
-                    case "binary":
-                        setBinary(parseInt(value, 10).toString(2))
-                        setDecimal(value);
-                        break;
+    const handleSelect = (option) => {
+        setInputSelect(option)
+    }
 
-                    case "decimal":
-                        setDecimal(parseInt(value, 2).toString(10))
-                        setBinary(value);
-                        break;
+    const handleChange = (value, base) => {
+
+            if( base == 'float') {
+                if(inputSelect == 'binary') {
+                    setInputBinary(parseInt(value, 10).toString(2))
+                    setInputFloat(value)
+                } else if (inputSelect == 'ternary') {
+                    setInputBinary(parseInt(value, 10).toString(3))
+                    setInputFloat(value)
+                } else if (inputSelect == 'sevenary') {
+                    setInputBinary(parseInt(value, 10).toString(7))
+                    setInputFloat(value)
+                } else if (inputSelect == 'hexadecimal') {
+                    setInputBinary(parseInt(value, 10).toString(16))
+                    setInputFloat(value)
+                    console.log(inputBinary)
                 }
-                break;
-            case('ternary'):
-                switch(base) {
-                    case "binary":
-                        setBinary(parseInt(value, 10).toString(3))
-                        setDecimal(value);
-                        break;
-
-                    case "decimal":
-                        setDecimal(parseInt(value, 3).toString(10))
-                        setBinary(value);
-                        break;
+            } else if ( base == 'binary' ) {
+                if(inputSelect == 'binary') {
+                    setInputFloat(parseInt(value, 2).toString(10))
+                    setInputBinary(value)
+                } else if (inputSelect == 'ternary') {
+                    setInputFloat(parseInt(value, 3).toString(10))
+                    setInputBinary(value)
+                } else if (inputSelect == 'sevenary') {
+                    setInputFloat(parseInt(value, 7).toString(10))
+                    setInputBinary(value)
+                } else if (inputSelect == 'hexadecimal') {
+                    setInputFloat(parseInt(value, 16).toString(10))
+                    setInputBinary(value)
                 }
-               break;
-        }
-
-        if( base == 'float') {
-            setInputBinary(parseInt(value, 10).toString(2))
-            setInputFloat(value)
-        } else if ( base == 'binary' ) {
-            setInputFloat(parseInt(value, 2).toString(10))
-            setInputBinary(value)
-            // if (value == 0 || value == 1 ) {
-            //     setInputFloat(parseInt(value, 2).toString(10))
-            //     setInputBinary(value)
-            // } else {
-            //     alert('only binary here')
-            //     setInputBinary('')
-            // }
-        }
+            }
     }
 
     return(
@@ -351,7 +343,7 @@ function App(props) {
                 number={inputBinary}
                 onChangeBase={handleChange} />
             <SelectNumberInput
-                onChangeBase={handleChange} />
+                onChangeSelect={handleSelect} />
         </React.Fragment>
     )
 }
@@ -365,15 +357,15 @@ function BaseNumberInput({text, number, onChangeBase, base}) {
     return(
         <React.Fragment>
             <p>Base {text} </p>
-            <input type="number" value={number} onChange={handleChange} />
+            <input value={number} onChange={handleChange} />
         </React.Fragment>
     )
 }
-function SelectNumberInput({onChangeBase, option}) {
+function SelectNumberInput({onChangeSelect, option}) {
 
     const handleChange = (e) => {
         let option = e.target.value
-        onChangeBase(option)
+        onChangeSelect(option)
     }
 
     return (
