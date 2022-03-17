@@ -287,17 +287,18 @@
 // ;
 //////////////////////////////////////////////////////////////////////////////
 function App(props) {
-    const [base, setBase] = React.useState();
+    const [base, setBase] = React.useState('none');
     const [inputFloat, setInputFloat] = React.useState();
     const [inputBinary, setInputBinary] = React.useState();
 
     const handleChange = (value, base) => {
-        console.log(base)
         if( base == 'float') {
+            setInputFloat(value)
             let float = parseInt(inputFloat)
             setInputBinary(float.toString(2))
         } else if ( base == 'binary' ) {
-            setInputFloat(parseInt(inputBinary,2))
+            console.log(inputBinary)
+            // setInputFloat(parseInt(inputBinary,2))
         }
     }
     // React.useEffect(() => {
@@ -328,11 +329,10 @@ function BaseNumberInput({text, number, onChangeBase, base}) {
         onChangeBase(value, base);
     }
 
-
     return(
         <React.Fragment>
             <p>Base {text} </p>
-            <input type="number" value={number} onChange={onChangeBase}/>
+            <input type="number" value={number} onChange={handleChange}/>
         </React.Fragment>
     )
 }
