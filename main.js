@@ -290,13 +290,23 @@ function App(props) {
     const [base, setBase] = React.useState('none');
     const [inputFloat, setInputFloat] = React.useState('');
     const [inputBinary, setInputBinary] = React.useState('');
+    const [inputSelect, setInputSelect] = React.useState('');
 
     const handleChange = (value, base) => {
+        switch (base) {
+            case('select') {
 
+            }
+        }
+
+
+        console.log(value)
         if( base == 'float') {
             setInputBinary(parseInt(value, 10).toString(2))
             setInputFloat(value)
         } else if ( base == 'binary' ) {
+            setInputFloat(parseInt(value, 2).toString(10))
+            setInputBinary(value)
             // if (value == 0 || value == 1 ) {
             //     setInputFloat(parseInt(value, 2).toString(10))
             //     setInputBinary(value)
@@ -319,6 +329,11 @@ function App(props) {
                 text={"Binaire"}
                 number={inputBinary}
                 onChangeBase={handleChange} />
+            <SelectNumberInput
+                base={"select"}
+                text={inputSelect}
+                number={inputSelect}
+                onChangeSelect={handleChange} />
         </React.Fragment>
     )
 }
@@ -336,6 +351,24 @@ function BaseNumberInput({text, number, onChangeBase, base}) {
         </React.Fragment>
     )
 }
+function SelectNumberInput({text, number, onChangeSelect, base}) {
+
+    const handleChange = ({target: {value}}) => {
+        onChangeSelect(value, base);
+    }
+
+    return (
+        <React.Fragment>
+            <select name="select" id="select" onChange={handleChange}>
+                <option value="1">Binaire</option>
+                <option value="2">Ternaire</option>
+                <option value="3">Septénaire</option>
+                <option value="4">Hexadécimal</option>
+            </select>
+        </React.Fragment>
+    )
+}
+ReactDOM.render(<App />, document.querySelector('#app'))
 
 //Binary
 // function BaseNumberInput(props) {
@@ -372,11 +405,6 @@ function BaseNumberInput({text, number, onChangeBase, base}) {
 //         </React.Fragment>
 //     )
 // }
-
-
-ReactDOM.render(<App />, document.querySelector('#app'))
-
-
 
 // function BaseNumberInput(props) {
 //
