@@ -292,9 +292,9 @@ function App(props) {
     const [inputBinary, setInputBinary] = React.useState('');
 
     const handleChange = (value, base, option) => {
-        // console.log(option)
+        console.log(value)
         switch (option) {
-            case(1):
+            case('binary'):
                 switch(base) {
                     case "binary":
                         setBinary(parseInt(value, 10).toString(2))
@@ -307,7 +307,7 @@ function App(props) {
                         break;
                 }
                 break;
-            case(2):
+            case('ternary'):
                 switch(base) {
                     case "binary":
                         setBinary(parseInt(value, 10).toString(3))
@@ -351,7 +351,7 @@ function App(props) {
                 number={inputBinary}
                 onChangeBase={handleChange} />
             <SelectNumberInput
-                onChangeSelect={handleChange} />
+                onChangeBase={handleChange} />
         </React.Fragment>
     )
 }
@@ -369,20 +369,20 @@ function BaseNumberInput({text, number, onChangeBase, base}) {
         </React.Fragment>
     )
 }
-function SelectNumberInput({onChangeSelect, option}) {
+function SelectNumberInput({onChangeBase, option}) {
 
-    const handleChange = ({target: {value}}) => {
-        console.log(option)
-        onChangeSelect(option);
+    const handleChange = (e) => {
+        let option = e.target.value
+        onChangeBase(option)
     }
 
     return (
         <React.Fragment>
             <select name="select" id="select" onChange={handleChange}>
-                <option value="1">Binaire</option>
-                <option value="2">Ternaire</option>
-                <option value="3">Septénaire</option>
-                <option value="4">Hexadécimal</option>
+                <option value="binary">Binaire</option>
+                <option value="ternary">Ternaire</option>
+                <option value="sevenary">Septénaire</option>
+                <option value="hexadecimal">Hexadécimal</option>
             </select>
         </React.Fragment>
     )
