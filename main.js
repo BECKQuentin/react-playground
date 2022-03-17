@@ -290,17 +290,38 @@ function App(props) {
     const [base, setBase] = React.useState('none');
     const [inputFloat, setInputFloat] = React.useState('');
     const [inputBinary, setInputBinary] = React.useState('');
-    const [inputSelect, setInputSelect] = React.useState('');
 
-    const handleChange = (value, base) => {
-        switch (base) {
-            case('select') {
+    const handleChange = (value, base, option) => {
+        // console.log(option)
+        switch (option) {
+            case(1):
+                switch(base) {
+                    case "binary":
+                        setBinary(parseInt(value, 10).toString(2))
+                        setDecimal(value);
+                        break;
 
-            }
+                    case "decimal":
+                        setDecimal(parseInt(value, 2).toString(10))
+                        setBinary(value);
+                        break;
+                }
+                break;
+            case(2):
+                switch(base) {
+                    case "binary":
+                        setBinary(parseInt(value, 10).toString(3))
+                        setDecimal(value);
+                        break;
+
+                    case "decimal":
+                        setDecimal(parseInt(value, 3).toString(10))
+                        setBinary(value);
+                        break;
+                }
+               break;
         }
 
-
-        console.log(value)
         if( base == 'float') {
             setInputBinary(parseInt(value, 10).toString(2))
             setInputFloat(value)
@@ -330,9 +351,6 @@ function App(props) {
                 number={inputBinary}
                 onChangeBase={handleChange} />
             <SelectNumberInput
-                base={"select"}
-                text={inputSelect}
-                number={inputSelect}
                 onChangeSelect={handleChange} />
         </React.Fragment>
     )
@@ -351,10 +369,11 @@ function BaseNumberInput({text, number, onChangeBase, base}) {
         </React.Fragment>
     )
 }
-function SelectNumberInput({text, number, onChangeSelect, base}) {
+function SelectNumberInput({onChangeSelect, option}) {
 
     const handleChange = ({target: {value}}) => {
-        onChangeSelect(value, base);
+        console.log(option)
+        onChangeSelect(option);
     }
 
     return (
