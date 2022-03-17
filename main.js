@@ -290,7 +290,7 @@ function App(props) {
     const [base, setBase] = React.useState('none');
     const [inputFloat, setInputFloat] = React.useState('');
     const [inputBinary, setInputBinary] = React.useState('');
-    const [inputSelect, setInputSelect] = React.useState('binary');
+    const [inputSelect, setInputSelect] = React.useState('2');
 
     const handleSelect = (option) => {
         setInputSelect(option)
@@ -299,34 +299,38 @@ function App(props) {
     const handleChange = (value, base) => {
 
             if( base == 'float') {
-                if(inputSelect == 'binary') {
-                    setInputBinary(parseInt(value, 10).toString(2))
-                    setInputFloat(value)
-                } else if (inputSelect == 'ternary') {
-                    setInputBinary(parseInt(value, 10).toString(3))
-                    setInputFloat(value)
-                } else if (inputSelect == 'sevenary') {
-                    setInputBinary(parseInt(value, 10).toString(7))
-                    setInputFloat(value)
-                } else if (inputSelect == 'hexadecimal') {
-                    setInputBinary(parseInt(value, 10).toString(16))
-                    setInputFloat(value)
-                    console.log(inputBinary)
-                }
+                setInputBinary(parseInt(value, 10).toString(inputSelect))
+                setInputFloat(value)
+                // if(inputSelect == 'binary') {
+                //     setInputBinary(parseInt(value, 10).toString(inputSelect))
+                //     setInputFloat(value)
+                // } else if (inputSelect == 'ternary') {
+                //     setInputBinary(parseInt(value, 10).toString(inputSelect))
+                //     setInputFloat(value)
+                // } else if (inputSelect == 'sevenary') {
+                //     setInputBinary(parseInt(value, 10).toString(inputSelect))
+                //     setInputFloat(value)
+                // } else if (inputSelect == 'hexadecimal') {
+                //     setInputBinary(parseInt(value, 10).toString(inputSelect))
+                //     setInputFloat(value)
+                //     console.log(inputBinary)
+                // }
             } else if ( base == 'binary' ) {
-                if(inputSelect == 'binary') {
-                    setInputFloat(parseInt(value, 2).toString(10))
-                    setInputBinary(value)
-                } else if (inputSelect == 'ternary') {
-                    setInputFloat(parseInt(value, 3).toString(10))
-                    setInputBinary(value)
-                } else if (inputSelect == 'sevenary') {
-                    setInputFloat(parseInt(value, 7).toString(10))
-                    setInputBinary(value)
-                } else if (inputSelect == 'hexadecimal') {
-                    setInputFloat(parseInt(value, 16).toString(10))
-                    setInputBinary(value)
-                }
+                setInputFloat(parseInt(value, inputSelect).toString(10))
+                setInputBinary(value)
+                // if(inputSelect == 'binary') {
+                //     setInputFloat(parseInt(value, 2).toString(10))
+                //     setInputBinary(value)
+                // } else if (inputSelect == 'ternary') {
+                //     setInputFloat(parseInt(value, 3).toString(10))
+                //     setInputBinary(value)
+                // } else if (inputSelect == 'sevenary') {
+                //     setInputFloat(parseInt(value, 7).toString(10))
+                //     setInputBinary(value)
+                // } else if (inputSelect == 'hexadecimal') {
+                //     setInputFloat(parseInt(value, 16).toString(10))
+                //     setInputBinary(value)
+                // }
             }
     }
 
@@ -371,10 +375,10 @@ function SelectNumberInput({onChangeSelect, option}) {
     return (
         <React.Fragment>
             <select name="select" id="select" onChange={handleChange}>
-                <option value="binary">Binaire</option>
-                <option value="ternary">Ternaire</option>
-                <option value="sevenary">Septénaire</option>
-                <option value="hexadecimal">Hexadécimal</option>
+                <option value="2">Binaire</option>
+                <option value="3">Ternaire</option>
+                <option value="7">Septénaire</option>
+                <option value="16">Hexadécimal</option>
             </select>
         </React.Fragment>
     )
