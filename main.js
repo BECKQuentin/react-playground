@@ -36,6 +36,23 @@ function App(props) {
     </React.Fragment>
   )
 }
+function BaseNumberInput({base, text, number, onChangeBase}) {
+  const handleChange = ({target: {value}}) => {
+    onChangeBase(value, base);
+  }
+
+  return(
+      <React.Fragment>
+        <p>Base {text} </p>
+        <input value={number} onChange={handleChange} />
+      </React.Fragment>
+  )
+}
+
+ReactDOM.render(
+    <App />,
+    document.querySelector('#app')
+);
 
 // Bonus
 //
@@ -117,22 +134,6 @@ function App(props) {
 // }
 
 
-function BaseNumberInput({base, text, number, onChangeBase}) {
-  const handleChange = ({target: {value}}) => {
-    onChangeBase(value, base);
-  }
 
-  return(
-      <React.Fragment>
-        <p>Base {text} </p>
-        <input value={number} onChange={handleChange} />
-      </React.Fragment>
-  )
-}
-
-ReactDOM.render(
-  <App />,
-  document.querySelector('#app')
-);
 
 
