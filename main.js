@@ -287,14 +287,20 @@
 // ;
 //////////////////////////////////////////////////////////////////////////////
 function App(props) {
-    const [base, setBase] = React.useState('');
+    const [base, setBase] = React.useState();
+    const [inputFloat, setInputFloat] = React.useState();
+    const [inputBinary, setInputBinary] = React.useState();
 
     const handleChange = (e) => {
         e.preventDefault()
+        setBase(e)
+        console.log(base)
+
         if( base == 'float') {
-            console.log('float')
+            let float = parseInt(inputFloat)
+            setInputBinary(float.toString(2))
         } else if ( base == 'binary' ) {
-            console.log('binary')
+            setInputFloat(parseInt(inputBinary,2))
         }
     }
 
@@ -303,41 +309,27 @@ function App(props) {
             <BaseNumberInput
                 base={"float"}
                 text={"Décimal"}
+                number={inputFloat}
                 onChangeBase={handleChange} />
             <BaseNumberInput
                 base={"binary"}
-                text={"Binaire"}/>
+                text={"Binaire"}
+                number={inputBinary}
+                onChangeBase={handleChange} />
         </React.Fragment>
     )
 }
 //Float
-function BaseNumberInput({text, base}) {
-
-    const [inputFloat, setInputFloat] = React.useState();
-    const [inputBinary, setInputBinary] = React.useState();
+function BaseNumberInput({text, number, onChangeBase}) {
 
     // const handleChange = (e) => {
-    //
-    //     e.preventDefault();
-    //     let entryFloat = document.getElementById('entryFloat')
-    //     setInputFloat(entryFloat.value)
-    //
-    //     // props.onChange(e.target.value)
-    // }
-    // const handleSubmit = (e) => {
-    //     e.preventDefault()
-    //
-    //     //convertir entryFloat en Binaire
-    //     let number = parseInt(inputFloat)
-    //     setInputBinary(number.toString(2))
-    //     let entryBinary = document.getElementById('entryBinary')
-    //     entryBinary.value = inputBinary
+    //      e.preventDefault();
     // }
 
     return(
         <React.Fragment>
             <p>Base {text} </p>
-            <input id="entryBinary" type="number" />
+            <input id="entryBinary" type="number" value={number} onChange={onChangeBase}/>
             {/*<input value={number} onChange={handleChange} />*/}
         </React.Fragment>
     )
