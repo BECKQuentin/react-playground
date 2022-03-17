@@ -297,13 +297,13 @@ function App(props) {
             setInputBinary(parseInt(value, 10).toString(2))
             setInputFloat(value)
         } else if ( base == 'binary' ) {
-            if (value == 0 || value == 1 ) {
-                setInputFloat(parseInt(value, 2).toString(10))
-                setInputBinary(value)
-            } else {
-                alert('only binary here')
-                setInputBinary('')
-            }
+            // if (value == 0 || value == 1 ) {
+            //     setInputFloat(parseInt(value, 2).toString(10))
+            //     setInputBinary(value)
+            // } else {
+            //     alert('only binary here')
+            //     setInputBinary('')
+            // }
         }
     }
 
