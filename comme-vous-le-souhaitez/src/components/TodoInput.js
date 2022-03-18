@@ -9,11 +9,9 @@ export default function TodoInput() {
     setInput(e.target.value)
   }
   const handleKeyDown = (e) => {
-    console.log(e.key)
     if(e.key == 'Enter') {
       setNewTodo(input)
       setInput('')
-      console.log(newTodo)
     } else if (e.key == 'Escape') {
       setInput('')
       // console.log(input)
