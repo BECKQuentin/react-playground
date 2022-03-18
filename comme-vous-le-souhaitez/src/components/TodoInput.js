@@ -3,23 +3,20 @@ import React, {useEffect} from "react";
 export default function TodoInput() {
 
   const [input, setInput] = React.useState('')
-  const [newTodo, setNewTodo] = React.useState('')
+  const [newtodo, setNewtodo] = React.useState('')
 
   const handleChange = (e) => {
     setInput(e.target.value)
   }
   const handleKeyDown = (e) => {
     if(e.key == 'Enter') {
-      setNewTodo(input)
+      setNewtodo(input)
       setInput('')
     } else if (e.key == 'Escape') {
       setInput('')
-      // console.log(input)
+      console.log(input)
     }
   }
-  // useEffect(() => {
-  //   console.log(input)
-  // },[input])
 
   return (
   <div>
