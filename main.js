@@ -298,40 +298,13 @@ function App(props) {
 
     const handleChange = (value, base) => {
 
-            if( base == 'float') {
-                setInputBinary(parseInt(value, 10).toString(inputSelect))
-                setInputFloat(value)
-                // if(inputSelect == 'binary') {
-                //     setInputBinary(parseInt(value, 10).toString(inputSelect))
-                //     setInputFloat(value)
-                // } else if (inputSelect == 'ternary') {
-                //     setInputBinary(parseInt(value, 10).toString(inputSelect))
-                //     setInputFloat(value)
-                // } else if (inputSelect == 'sevenary') {
-                //     setInputBinary(parseInt(value, 10).toString(inputSelect))
-                //     setInputFloat(value)
-                // } else if (inputSelect == 'hexadecimal') {
-                //     setInputBinary(parseInt(value, 10).toString(inputSelect))
-                //     setInputFloat(value)
-                //     console.log(inputBinary)
-                // }
-            } else if ( base == 'binary' ) {
-                setInputFloat(parseInt(value, inputSelect).toString(10))
-                setInputBinary(value)
-                // if(inputSelect == 'binary') {
-                //     setInputFloat(parseInt(value, 2).toString(10))
-                //     setInputBinary(value)
-                // } else if (inputSelect == 'ternary') {
-                //     setInputFloat(parseInt(value, 3).toString(10))
-                //     setInputBinary(value)
-                // } else if (inputSelect == 'sevenary') {
-                //     setInputFloat(parseInt(value, 7).toString(10))
-                //     setInputBinary(value)
-                // } else if (inputSelect == 'hexadecimal') {
-                //     setInputFloat(parseInt(value, 16).toString(10))
-                //     setInputBinary(value)
-                // }
-            }
+        if( base == 'float') {
+            setInputBinary(parseInt(value, 10).toString(inputSelect))
+            setInputFloat(value)
+        } else if ( base == 'binary' ) {
+            setInputFloat(parseInt(value, inputSelect).toString(10))
+            setInputBinary(value)
+        }
     }
 
     return(
